@@ -164,7 +164,8 @@
           <div class="deal__features row">
             <div class="deal__feature col">
               <div class="deal__feature-label">Provider</div>
-              <div class="deal__feature-value">{{ provider }}</div>
+              <!-- <div class="deal__feature-value">{{ provider }}</div> -->
+              <img src="{{ src }}" width="56px" height="auto" alt="{{ provider }}" />
             </div>
             <div class="deal__feature col">
               <div class="deal__feature-label">Upfront Cost</div>
@@ -194,6 +195,10 @@
       <svg class="icon" aria-hidden="true">
         <use xlink:href="{{ iconId }}"></use>
       </icon>
+    </script>
+
+    <script id="template-no-deals-available" type="text/template">
+      <p style="text-align: center; font-weight: bold;">Sorry, no deals are available for your filter selection</p>
     </script>
 
     <!-- Scripts -->

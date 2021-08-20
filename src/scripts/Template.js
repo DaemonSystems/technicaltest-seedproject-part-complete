@@ -3,6 +3,7 @@ class Template {
     this.deal = document.getElementById("template-deal").innerHTML;
     this.listItem = document.getElementById("template-list-item").innerHTML;
     this.icon = document.getElementById("template-icon").innerHTML;
+    this.noDeals = document.getElementById("template-no-deals-available").innerHTML;
     this.currencyFormatter = new Intl.NumberFormat("en-GB", {
       style: "currency",
       currency: "GBP",
@@ -26,6 +27,10 @@ class Template {
       .replace(
         "{{ productList }}",
         this.buildProductIconList(data.productTypes)
+      )
+      .replace(
+        "{{ src }}",
+        '/assets/' + this.getProviderImageName(data.provider.name)
       );
   }
 
@@ -51,8 +56,24 @@ class Template {
     }, "");
   }
 
+  buildNoDealPlaceholder() {
+    return this.noDeals;
+  }
+
   buildIcon(id) {
     return this.icon.replace("{{ iconId }}", id);
+  }
+
+  getProviderImageName(name) {
+    switch (name.toLowerCase()) {
+      case "bt":
+        return 'bt.svg'
+      case "ee":
+      case "sky":
+      case "plusnet":
+      case "origin broadband":
+        return name + '.png'
+    }
   }
 
   getIconId(name) {
